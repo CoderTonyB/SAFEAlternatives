@@ -1,0 +1,12 @@
+<TabView #tabView (selectedIndexChanged)="onHomeSelectedIndexChanged($event)" androidSelectedTabHighlightColor="#035958"
+    style="background-color:#f3f2e8;">
+    <StackLayout *tabItem=" {title: 'S.A.F.E.'} ">
+        <router-outlet name="homeoutlet "></router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'My Logs'} ">
+        <router-outlet name="logoutlet "></router-outlet>
+    </StackLayout>
+    <StackLayout *tabItem="{title: 'Self Assess'} ">
+        <router-outlet name="assessoutlet "></router-outlet>
+    </StackLayout>
+</TabView>
