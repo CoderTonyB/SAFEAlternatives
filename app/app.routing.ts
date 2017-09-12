@@ -10,13 +10,13 @@ import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
 
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home/(homeoutlet:safehome)", pathMatch: "full" },
+    { path: "", redirectTo: "/home/(homeoutlet:safehome//logoutlet:loghome//assessoutlet:assesshome)", pathMatch: "full" },
     {
         path: "home", component: HomeComponent,
         children: [
             { path: "safehome", component: SAFEHomeComponent, outlet: 'homeoutlet' },
-            { path: "LogHome", component: ItemsComponent, outlet: 'logoutlet' },
-            { path: "AssessHome", component: ItemsComponent, outlet: 'assessoutlet' }
+            { path: "loghome", component: SAFEHomeComponent, outlet: 'logoutlet' },
+            { path: "assesshome", component: SAFEHomeComponent, outlet: 'assessoutlet' }
         ]
     },
     { path: "items", component: ItemsComponent },
