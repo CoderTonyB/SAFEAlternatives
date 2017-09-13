@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as application from "application";
+import { RouterExtensions } from "nativescript-angular";
+import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
+import { isAndroid } from "platform";
 
 @Component({
 	selector: 'LogList',
@@ -8,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class LogListComponent implements OnInit {
 
-	constructor() { }
+	constructor(private routerExtensions: RouterExtensions) { }
 
-	ngOnInit() { }
+	ngOnInit() {
+
+	}
 }

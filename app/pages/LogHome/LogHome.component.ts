@@ -4,7 +4,6 @@ import { TextField } from "ui/text-field";
 import { EventData } from "data/observable";
 import { RouterExtensions } from "nativescript-angular";
 
-
 @Component({
 	selector: 'LogHome',
 	templateUrl: './pages/LogHome/LogHome.component.html',
@@ -15,7 +14,9 @@ export class LogHomeComponent implements OnInit {
 	txtPassword: TextField;
 	txtPassword2: TextField;
 
-	constructor(private page: Page, private routerExtensions: RouterExtensions) { }
+	constructor(private page: Page, private routerExtensions: RouterExtensions) {
+
+	}
 
 	ngOnInit() {
 		this.txtPassword = <TextField>this.page.getViewById("txtPassword");
