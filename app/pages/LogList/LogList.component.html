@@ -1,1 +1,3 @@
-<Label class="LogList" text="Hello LogListComponent!"></Label>
+<StackLayout *ngFor="let logName of logs">
+    <Label class="LogList" text="{{logName}}"></Label>
+</StackLayout>

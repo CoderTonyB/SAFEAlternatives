@@ -26,7 +26,6 @@ export class LogHomeComponent implements OnInit {
 		this.txtPassword = <TextField>this.page.getViewById("txtPassword");
 		this.txtPassword2 = <TextField>this.page.getViewById("txtPassword2");
 		this.txtPassword.focus();
-		this.dataService.getLogList();
 	}
 
 	savePassword(event: EventData) {
