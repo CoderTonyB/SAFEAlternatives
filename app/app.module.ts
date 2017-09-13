@@ -12,6 +12,8 @@ import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
 import { LogHomeComponent } from "./pages/LogHome/LogHome.component"
 import { LogListComponent } from "./pages/LogList/LogList.component"
 
+import { DataService } from "./services/data.service"
+
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
@@ -37,7 +39,7 @@ import { LogListComponent } from "./pages/LogList/LogList.component"
         LogListComponent
     ],
     providers: [
-        ItemService
+        ItemService, DataService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
