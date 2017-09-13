@@ -7,9 +7,7 @@ import { ItemDetailComponent } from "./item/item-detail.component";
 import { HomeComponent } from "./pages/home/home.component"
 import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
 import { LogHomeComponent } from "./pages/LogHome/LogHome.component"
-
-
-
+import { LogListComponent } from "./pages/LogList/LogList.component"
 
 const routes: Routes = [
     { path: "", redirectTo: "/home/(homeoutlet:safehome//logoutlet:loghome//assessoutlet:assesshome)", pathMatch: "full" },
@@ -18,6 +16,7 @@ const routes: Routes = [
         children: [
             { path: "safehome", component: SAFEHomeComponent, outlet: 'homeoutlet' },
             { path: "loghome", component: LogHomeComponent, outlet: 'logoutlet' },
+            { path: "loglist", component: LogListComponent, outlet: 'logoutlet' },
             { path: "assesshome", component: SAFEHomeComponent, outlet: 'assessoutlet' }
         ]
     },

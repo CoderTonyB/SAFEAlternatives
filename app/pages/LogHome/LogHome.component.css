@@ -1,3 +1,5 @@
-.LogHome {
+.LogHome {}
 
+StackLayout {
+    margin: 10 25 0 25;
 }
