@@ -6,6 +6,8 @@ import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import { HomeComponent } from "./pages/home/home.component"
 import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
+import { LogHomeComponent } from "./pages/LogHome/LogHome.component"
+
 
 
 
@@ -15,7 +17,7 @@ const routes: Routes = [
         path: "home", component: HomeComponent,
         children: [
             { path: "safehome", component: SAFEHomeComponent, outlet: 'homeoutlet' },
-            { path: "loghome", component: SAFEHomeComponent, outlet: 'logoutlet' },
+            { path: "loghome", component: LogHomeComponent, outlet: 'logoutlet' },
             { path: "assesshome", component: SAFEHomeComponent, outlet: 'assessoutlet' }
         ]
     },

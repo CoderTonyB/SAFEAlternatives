@@ -9,6 +9,7 @@ import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
+import { LogHomeComponent } from "./pages/LogHome/LogHome.component"
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -30,7 +31,8 @@ import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
         ItemsComponent,
         ItemDetailComponent,
         HomeComponent,
-        SAFEHomeComponent
+        SAFEHomeComponent,
+        LogHomeComponent
     ],
     providers: [
         ItemService
