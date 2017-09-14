@@ -22,7 +22,10 @@ export class LogListComponent implements OnInit {
 	ngOnInit() {
 		this.dataService.getLogList().then((logs) => {
 			this.logs = logs;
-			console.dir(this.logs);
 		}, error => alert("Error:" + error));
+	}
+
+	OpenLogList(LogId: Number) {
+		console.log("Open Log Id:", LogId);
 	}
 }
