@@ -27,5 +27,8 @@ export class LogListComponent implements OnInit {
 
 	OpenLogList(LogId: Number) {
 		console.log("Open Log Id:", LogId);
+		this.routerExtensions.navigate(['/home', { outlets: { logoutlet: ['loginventory', LogId] } }]);
+
+
 	}
 }

@@ -11,6 +11,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { SAFEHomeComponent } from "./pages/SAFEHome/SAFEHome.component"
 import { LogHomeComponent } from "./pages/LogHome/LogHome.component"
 import { LogListComponent } from "./pages/LogList/LogList.component"
+import { LogInventoryComponent } from "./pages/LogInventory/LogInventory.component"
 
 import { DataService } from "./services/data.service"
 
@@ -36,7 +37,8 @@ import { DataService } from "./services/data.service"
         HomeComponent,
         SAFEHomeComponent,
         LogHomeComponent,
-        LogListComponent
+        LogListComponent,
+        LogInventoryComponent
     ],
     providers: [
         ItemService, DataService
