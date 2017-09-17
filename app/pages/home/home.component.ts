@@ -26,7 +26,4 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	onHomeSelectedIndexChanged(event: SelectedIndexChangedEventData) {
-		console.log(event.newIndex);
-	}
 }
