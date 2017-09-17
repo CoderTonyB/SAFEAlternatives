@@ -1,8 +1,27 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "nativescript-angular";
+import { isAndroid } from "platform";
 
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html",
 })
 
-export class AppComponent { }
+export class AppComponent implements OnInit {
+
+    showBack: boolean;
+
+    constructor(private routerExtensions: RouterExtensions) {
+
+    }
+
+    goBack() {
+        this.routerExtensions.back();
+    }
+
+    ngOnInit(): void {
+        this.showBack = !isAndroid;
+    }
+}
+
+

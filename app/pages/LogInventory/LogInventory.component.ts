@@ -22,5 +22,9 @@ export class LogInventoryComponent implements OnInit {
 		}, err => console.dir(err));
 	}
 
+	newLog() {
+		console.log("make a new log");
+	}
+
 	ngOnInit() { }
 }

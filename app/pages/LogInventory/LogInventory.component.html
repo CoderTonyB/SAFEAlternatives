@@ -1,1 +1,6 @@
+<ActionBarExtension *ngIf="true">
+    <ActionItem (tap)="newLog()">
+        <Button text="New Log" class="btnAction"></Button>
+    </ActionItem>
+</ActionBarExtension>
 <Label class="LogInventory" text="count of logs {{logData?.length}}"></Label>
