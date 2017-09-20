@@ -25,13 +25,13 @@ export class DataService {
         return new Promise((resolve, reject) => {
             let logs: Array<Log> = new Array<Log>();
 
-            this.database.all("SELECT * FROM Logs where LogTypeId = ? order by Timestamp Desc", [LogTypeId]).then((rows: Array<any>) => {
-                console.log("Rows found:", rows.length);
+            this.database.all("SELECT LogId, TimestampUTC, Title, LogTypeId FROM Logs where LogTypeId = ? order by TimestampUTC Desc", [LogTypeId]).then((rows: Array<any>) => {
                 rows.forEach(row => {
-                    console.log("pushing:", row[0]);
                     let log = new Log();
                     log.LogId = row[0];
-                    log.Timestamp = row[1];
+                    log.TimestampUTC = new Date(row[1]).toLocaleString();
+                    log.Title = row[2];
+                    log.LogTypeId = row[3];
                     logs.push(log);
                 });
                 resolve(logs);
@@ -47,11 +47,9 @@ export class DataService {
             let LogTypes: Array<LogType> = new Array<LogType>();
 
             this.database.all("SELECT LogTypeId, LogType FROM LogTypes order by LogTypeId").then((rows: Array<any>) => {
-                console.log("Rows found:", rows.length);
                 rows.forEach(row => {
-                    console.log("pushing:", row[1]);
                     let logType = new LogType();
-                    logType.LogType = row[0];
+                    logType.LogTypeId = row[0];
                     logType.LogType = row[1];
                     LogTypes.push(logType);
                 });

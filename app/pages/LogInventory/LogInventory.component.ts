@@ -13,12 +13,12 @@ import { Log } from "../../models/Log"
 })
 
 export class LogInventoryComponent implements OnInit {
-	log: Array<Log>;
+	logs: Array<Log>;
 	constructor(private route: ActivatedRoute, private dataService: DataService) {
+		this.logs = new Array<Log>();
 		const id = this.route.snapshot.params["id"];
 		this.dataService.getLogInventory(id).then((x) => {
-			console.dir(x);
-			this.log = x;
+			this.logs = x;
 		}, err => console.dir(err));
 	}
 

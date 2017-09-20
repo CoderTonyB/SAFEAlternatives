@@ -38,7 +38,9 @@ export class LogHomeComponent implements OnInit {
 			alert("Passwords do not match!");
 		}
 		else {
-			this.routerExtensions.navigate(['/home', { outlets: { logoutlet: ['loglist'] } }]);
+			this.routerExtensions.navigate(['/home', {
+				outlets: { logoutlet: ['loglist'] }
+			}]);
 		}
 	}
 }
