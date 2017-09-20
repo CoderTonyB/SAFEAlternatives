@@ -1,4 +1,6 @@
 export class Log {
     LogId: Number;
-    LogName: String;
+    Timestamp: Date;
+    LogTypeId: Number;
+    Title: string
 }

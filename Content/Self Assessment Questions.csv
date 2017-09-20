@@ -1,0 +1,45 @@
+﻿Order,Question,Type
+1,I was often told as a child that I had to be strong.,True/False
+2,I do not remember much affection being displayed in my family.,True/False
+3,Anger was the feeling most often displayed in my family.,True/False
+4,I rarely felt I could express my feelings to my family.,True/False
+5,As a child I remember my mother and/or father as overly intrusive.,True/False
+6,As a child I remember being sexually abused.,True/False
+7,As a child I remember being physically abused.,True/False
+8,As a child I remember being emotionally abuse.,True/False
+9,As a child my mother and/or father was emotionally absent.,True/False
+10,I remember times when I was punished for strong feelings.,True/False
+11,"When I was upset or frightened, I was ignored.",True/False
+12,I grew up in a very religious household.,True/False
+13,I had a parent who was unable to raise me due to a physical illness or trauma.,True/False
+14,I grew up with a lot of double messages.,True/False
+15,I often think of myself as a “bad” person.,True/False
+16,I often believe that I’m at fault for everything that goes wrong.,True/False
+17,I often think that everyone would be happier if I were dead.,True/False
+18,I hate change.,True/False
+19,I seem to have an all-or-nothing attitude.,True/False
+20,I usually can’t find words that explain how I feel.,True/False
+21,I am a perfectionist.,True/False
+22,I think I am a burden to others.,True/False
+23,I do not want to die; I just want to stop my emotional pain.,True/False
+24,My friends and family have become concerned about my body piercing.,True/False
+25,I have decided to continue piercing despite the fact that one or more significant others have told me that they are repulsed by it.,True/False
+26,I become anxious when anyone tries to stop me or prevent me from getting a new piercing.,True/False
+27,I have problems with drugs or alcohol.,True/False
+28,I have sometimes neglected to seek medical attention for an illness or injury when part of me knows that I should have.,True/False
+29,"I have an eating disorder, or have had one sometime in the past.",True/False
+30,I have – or have had- a tendency to be promiscuous.,True/False
+31,I have overdosed on drugs.,True/False
+32,I often obsess about self-injury.,True/False
+33,I sometimes can’t explain where my injuries come from.,True/False
+34,I get anxious when my wounds start to heal.,True/False
+35,"I often believe that if I don’t self-injure, I’ll go “crazy.”",True/False
+36,No one can hurt me more than I can hurt myself.,True/False
+37,I can’t imagine life without self-injury.,True/False
+38,"If I stop self-injuring, my parents win.",True/False
+39,I often self-injure as a way to punish myself.,True/False
+40,Self-injury is my best friend.,True/False
+41,I consider my tendency to self-harm an addiction.,True/False
+42,Many times I harm myself more out of habit than for any specific reason.,True/False
+43,"How many times have you self injured? (e.g. 2, 6, 10, 20 times…)",Integer
+44,When did you last harm yourself?,Date

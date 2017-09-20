@@ -4,7 +4,7 @@ import { RouterExtensions } from "nativescript-angular";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
 import { isAndroid } from "platform";
 import { DataService } from "../../services/data.service";
-import { Log } from "../../models/Log"
+import { LogType } from "../../models/LogType"
 
 @Component({
 	selector: 'LogList',
@@ -13,14 +13,14 @@ import { Log } from "../../models/Log"
 })
 
 export class LogListComponent implements OnInit {
-	logs: Array<Log>;
+	logs: Array<LogType>;
 
 	constructor(private routerExtensions: RouterExtensions,
 		private dataService: DataService
 	) { }
 
 	ngOnInit() {
-		this.dataService.getLogList().then((logs) => {
+		this.dataService.getLogTypes().then((logs) => {
 			this.logs = logs;
 		}, error => alert("Error:" + error));
 	}

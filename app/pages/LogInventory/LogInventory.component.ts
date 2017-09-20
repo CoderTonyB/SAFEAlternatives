@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 //import { EventData } from 'data/observable';
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../services/data.service";
-import { LogData } from "../../models/LogData"
+import { Log } from "../../models/Log"
 
 @Component({
 	selector: 'LogInventory',
@@ -13,12 +13,12 @@ import { LogData } from "../../models/LogData"
 })
 
 export class LogInventoryComponent implements OnInit {
-	logData: Array<LogData>;
+	log: Array<Log>;
 	constructor(private route: ActivatedRoute, private dataService: DataService) {
 		const id = this.route.snapshot.params["id"];
 		this.dataService.getLogInventory(id).then((x) => {
 			console.dir(x);
-			this.logData = x;
+			this.log = x;
 		}, err => console.dir(err));
 	}
 

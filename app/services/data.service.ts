@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 var Sqlite = require("nativescript-sqlite");
 import { Log } from "../models/Log"
-import { LogData } from "../models/LogData"
+import { LogType } from "../models/LogType"
 
 @Injectable()
 export class DataService {
@@ -21,20 +21,20 @@ export class DataService {
         console.log("Database is initialized");
     }
 
-    getLogInventory(LogId: Number): Promise<Array<LogData>> {
+    getLogInventory(LogTypeId: Number): Promise<Array<Log>> {
         return new Promise((resolve, reject) => {
-            let logData: Array<LogData> = new Array<LogData>();
+            let logs: Array<Log> = new Array<Log>();
 
-            this.database.all("SELECT distinct LogDataId, TimeStamp FROM LogData where LogId = ? order by Timestamp Desc", [LogId]).then((rows: Array<any>) => {
+            this.database.all("SELECT * FROM Logs where LogTypeId = ? order by Timestamp Desc", [LogTypeId]).then((rows: Array<any>) => {
                 console.log("Rows found:", rows.length);
                 rows.forEach(row => {
                     console.log("pushing:", row[0]);
-                    let log = new LogData();
+                    let log = new Log();
                     log.LogId = row[0];
-                    log.TimeStamp = row[1];
-                    logData.push(log);
+                    log.Timestamp = row[1];
+                    logs.push(log);
                 });
-                resolve(logData);
+                resolve(logs);
             }, error => {
                 console.log("SELECT ERROR", error);
                 reject(error);
@@ -42,20 +42,20 @@ export class DataService {
         });
     }
 
-    getLogList(): Promise<Array<Log>> {
+    getLogTypes(): Promise<Array<LogType>> {
         return new Promise((resolve, reject) => {
-            let logList: Array<Log> = new Array<Log>();
+            let LogTypes: Array<LogType> = new Array<LogType>();
 
-            this.database.all("SELECT LogId, LogName FROM LogList order by LogId").then((rows: Array<any>) => {
+            this.database.all("SELECT LogTypeId, LogType FROM LogTypes order by LogTypeId").then((rows: Array<any>) => {
                 console.log("Rows found:", rows.length);
                 rows.forEach(row => {
                     console.log("pushing:", row[1]);
-                    let log = new Log();
-                    log.LogId = row[0];
-                    log.LogName = row[1];
-                    logList.push(log);
+                    let logType = new LogType();
+                    logType.LogType = row[0];
+                    logType.LogType = row[1];
+                    LogTypes.push(logType);
                 });
-                resolve(logList);
+                resolve(LogTypes);
             }, error => {
                 console.log("SELECT ERROR", error);
                 reject(error);
