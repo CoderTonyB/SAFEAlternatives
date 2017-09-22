@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { RouterExtensions } from 'nativescript-angular';
+import { RouterExtensions } from 'nativescript-angular';
 //import { TextField } from 'ui/text-field';
 //import { EventData } from 'data/observable';
 import { ActivatedRoute } from "@angular/router";
@@ -13,17 +13,27 @@ import { Log } from "../../models/Log"
 })
 
 export class LogInventoryComponent implements OnInit {
+	logTypeId: number;
+
 	logs: Array<Log>;
-	constructor(private route: ActivatedRoute, private dataService: DataService) {
+	constructor(private route: ActivatedRoute, private dataService: DataService,
+		private routerExtensions: RouterExtensions
+	) {
 		this.logs = new Array<Log>();
 		const id = this.route.snapshot.params["id"];
+		this.logTypeId = id;
 		this.dataService.getLogInventory(id).then((x) => {
 			this.logs = x;
 		}, err => console.dir(err));
 	}
 
 	newLog() {
-		console.log("make a new log");
+		this.OpenLogDataEntry(this.logTypeId * -1); //sending negitive to indicate new
+	}
+
+	OpenLogDataEntry(LogId: Number) {
+		console.log("open log:", LogId);
+		this.routerExtensions.navigate(['/home', { outlets: { logoutlet: ['logdataentry', LogId] } }]);
 	}
 
 	ngOnInit() { }

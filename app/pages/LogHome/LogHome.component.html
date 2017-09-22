@@ -2,5 +2,5 @@
     <TextField class="input input-border" id="txtPassword" hint="New Password" text="test" autocorrect="false" secure="true" returnKeyType="next"></TextField>
     <TextField class="input input-border" id="txtPassword2" hint="Confirm Password" text="test" autocorrect="false" secure="true"
         returnKeyType="done" (returnPress)="savePassword($event)"></TextField>
-    <Button class="safebutton" id="btnSavePassword" text="Set Password" (tap)="savePassword($event)"></Button>
+    <Button class="safebutton" class="btn btnAction" id="btnSavePassword" text="Set Password" (tap)="savePassword($event)"></Button>
 </StackLayout>

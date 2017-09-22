@@ -2,5 +2,6 @@
     <Label text="Select a log to start" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
     <Label text="journaling your thoughts" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
 
-    <Button *ngFor="let log of logs" text="{{log.LogType}}" (tap)="OpenLogList(log.LogTypeId)"></Button>
+    <Button *ngFor="let log of logs" class="btn btn-rounded btnAction" text="{{log.LogType}}"
+        (tap)="OpenLogList(log.LogTypeId)"></Button>
 </StackLayout>

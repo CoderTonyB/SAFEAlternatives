@@ -1,0 +1,4 @@
+<StackLayout class="form" *ngFor="let question of Questions">
+    <Label class="body" text="{{question.Question}}"></Label>
+    <TextField class="input input-rounded" hint="{{question.Hint}}" text=""></TextField>
+</StackLayout>

@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 var Sqlite = require("nativescript-sqlite");
-import { Log } from "../models/Log"
-import { LogType } from "../models/LogType"
+import { Log } from "../models/Log";
+import { LogType } from "../models/LogType";
+import { Question } from "../models/Question";
 
 @Injectable()
 export class DataService {
@@ -58,6 +59,32 @@ export class DataService {
                 console.log("SELECT ERROR", error);
                 reject(error);
             });
+        });
+
+
+    }
+
+    getQuestionsForLogType(LogTypeId: number): Promise<Array<Question>> {
+        return new Promise((resolve, reject) => {
+            let Questions: Array<Question> = new Array<Question>();
+
+            this.database.all(`Select QuestionId, Question, Hint, Required, LogTypeId, QuestionOrder from Questions 
+                where LogTypeId = ? 
+                order by QuestionOrder`, [LogTypeId]).then((rows: Array<any>) => {
+                    rows.forEach(row => {
+                        let question = new Question();
+                        question.QuestionId = row[0];
+                        question.Question = row[1];
+                        question.Hint = row[2];
+                        question.Required = row[3];
+                        question.LogTypeId = row[4];
+                        Questions.push(question);
+                    });
+                    resolve(Questions);
+                }, error => {
+                    console.log("SELECT ERROR", error);
+                    reject(error);
+                });
         });
 
 

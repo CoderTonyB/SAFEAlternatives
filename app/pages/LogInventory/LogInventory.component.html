@@ -1,12 +1,12 @@
 <ActionBarExtension *ngIf="true">
     <ActionItem (tap)="newLog()">
-        <Button text="New Log" class="btnAction"></Button>
+        <Button text="New Log" class="btnAction" [nsRouterLink]="['/logdataentry']"></Button>
     </ActionItem>
 </ActionBarExtension>
 <GridLayout rows="*" columns="*">
     <ListView [items]="logs" (itemTap)="viewLog(event)" class="list-group">
         <ng-template let-item="item" let-odd="odd" let-even="even">
-            <StackLayout class="list-group-item">
+            <StackLayout class="list-group-item" (tap)="OpenLogDataEntry(item.LogId)">
                 <Label [text]="item.TimestampUTC"></Label>
                 <Label [text]="item.Title"></Label>
             </StackLayout>
