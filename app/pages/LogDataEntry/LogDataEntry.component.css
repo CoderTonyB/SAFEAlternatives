@@ -1,7 +1,10 @@
-.LogDataEntry {
+.LogDataEntry {}
 
+Label {
+    color: #035958;
+    font-weight: bold;
 }
 
 StackLayout {
-    margin: 10 25 0 25;
+    margin: 10 10 0 10;
 }
