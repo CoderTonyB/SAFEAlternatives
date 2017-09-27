@@ -1,8 +1,10 @@
 <ScrollView>
     <StackLayout>
-        <StackLayout class="form" *ngFor="let question of Questions">
+        <Button text="Save" (tap)="Save()"></Button>
+
+        <StackLayout class="form" *ngFor="let question of Questions; let i = index">
             <Label class="body" text="{{question.Question}}" textWrap="true"></Label>
-            <TextView class="input input-rounded" hint="{{question.Hint}}" text=""></TextView>
+            <TextView class="input input-rounded" hint="{{question.Hint}}" [(ngModel)]="Answers[i]" text=""></TextView>
         </StackLayout>
     </StackLayout>
 </ScrollView>

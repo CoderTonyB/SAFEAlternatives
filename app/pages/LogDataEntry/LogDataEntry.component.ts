@@ -15,13 +15,28 @@ import { Question } from "../../models/Question";
 
 export class LogDataEntryComponent implements OnInit {
 	Questions: Array<Question>;
+	Answers: Array<string> = new Array<string>();
 
 	constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
 	ngOnInit() {
 		const id = this.route.snapshot.params["id"];
+		this.LoadQuestions(id);
+
+	}
+
+	private LoadQuestions(id: number) {
 		this.dataService.getQuestionsForLogType(id).then(result => {
 			this.Questions = result;
+			for (var index = 0; index < result.length; index++) {
+				this.Answers.push("Answer " + index.toString());
+			}
+		});
+	}
+
+	Save() {
+		this.Answers.forEach(answer => {
+			console.log(answer);
 		});
 	}
 }
