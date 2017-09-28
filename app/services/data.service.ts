@@ -49,23 +49,28 @@ export class DataService {
     }
 
 
-    saveLogResponses(logResponses: Array<LogResponse>, log: Log) {
-        logResponses.forEach(logResponse => {
-            if (logResponse.LogResponseId != null) { //update existing
-                let sql = `UPDATE LogResponses set Answer = ? where LogResponseId = ?`;
-                this.database.execSQL(sql, [logResponse.Answer, logResponse.LogResponseId]).then(response => {
-                    console.log("Save Response:", response);
-                }, err => {
-                    this.logError(err);
-                });
-            } else { //first time a response to this question is being saved
-                let sql = `INSERT INTO LogResponses (LogId, QuestionId, Answer) VALUES (?,?,?)`;
-                this.database.execSQL(sql, [log.LogId, logResponse.QuestionId, logResponse.Answer]).then(response => {
-                    console.log("Save Response:", response);
-                }, err => {
-                    this.logError(err);
-                });
-            }
+    saveLogResponses(logResponses: Array<LogResponse>, log: Log): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            logResponses.forEach(logResponse => {
+                if (logResponse.LogResponseId != null) { //update existing
+                    let sql = `UPDATE LogResponses set Answer = ? where LogResponseId = ?`;
+                    this.database.execSQL(sql, [logResponse.Answer, logResponse.LogResponseId]).then(response => {
+                        console.log("Save Response:", response);
+                    }, err => {
+                        this.logError(err);
+                        resolve(false);
+                    });
+                } else { //first time a response to this question is being saved
+                    let sql = `INSERT INTO LogResponses (LogId, QuestionId, Answer) VALUES (?,?,?)`;
+                    this.database.execSQL(sql, [log.LogId, logResponse.QuestionId, logResponse.Answer]).then(response => {
+                        console.log("Save Response:", response);
+                    }, err => {
+                        this.logError(err);
+                        resolve(false);
+                    });
+                }
+            });
+            resolve(true);
         });
     }
 

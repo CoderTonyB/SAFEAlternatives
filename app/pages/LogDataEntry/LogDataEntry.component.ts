@@ -20,7 +20,7 @@ export class LogDataEntryComponent implements OnInit {
 	LogResponses: Array<LogResponse> = new Array<LogResponse>();
 	LogPrototype: Log = new Log();
 
-	constructor(private route: ActivatedRoute, private dataService: DataService) { }
+	constructor(private route: ActivatedRoute, private dataService: DataService, private router: RouterExtensions) { }
 
 	ngOnInit() {
 		const id = this.route.snapshot.params["id"];
@@ -65,10 +65,18 @@ export class LogDataEntryComponent implements OnInit {
 		if (this.LogPrototype.LogId == -1) {
 			this.dataService.AddLog(this.LogPrototype).then(result => {
 				this.LogPrototype.LogId = result;
-				this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype);
+				this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype).then(result => {
+					if (result == true) {
+						this.router.back();
+					}
+				});
 			});
 		} else {
-			this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype);
+			this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype).then(result => {
+				if (result == true) {
+					this.router.back();
+				}
+			});
 		}
 	}
 }
