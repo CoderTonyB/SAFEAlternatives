@@ -23,6 +23,52 @@ export class DataService {
         console.log("Database is initialized");
     }
 
+    logError(error: string) {
+        console.log(error);
+    }
+
+    AddLog(log: Log): Promise<number> {
+        let date = new Date();
+        let newID = -1;
+        let sql = `INSERT INTO Logs (TimestampUTC, Title, LogTypeId) VALUES (?,?,?)`;
+
+        return new Promise((resolve, reject) => {
+            if (!log.Title) {
+                log.Title = "Untitled";
+            }
+
+            this.database.execSQL(sql, [date.toISOString(), log.Title, log.LogTypeId]).then(response => {
+                console.log("Save new log Response:", response);
+                newID = response;
+                resolve(response);
+            }, err => {
+                this.logError(err);
+                reject(err);
+            });
+        });
+    }
+
+
+    saveLogResponses(logResponses: Array<LogResponse>, log: Log) {
+        logResponses.forEach(logResponse => {
+            if (logResponse.LogResponseId != null) { //update existing
+                let sql = `UPDATE LogResponses set Answer = ? where LogResponseId = ?`;
+                this.database.execSQL(sql, [logResponse.Answer, logResponse.LogResponseId]).then(response => {
+                    console.log("Save Response:", response);
+                }, err => {
+                    this.logError(err);
+                });
+            } else { //first time a response to this question is being saved
+                let sql = `INSERT INTO LogResponses (LogId, QuestionId, Answer) VALUES (?,?,?)`;
+                this.database.execSQL(sql, [log.LogId, logResponse.QuestionId, logResponse.Answer]).then(response => {
+                    console.log("Save Response:", response);
+                }, err => {
+                    this.logError(err);
+                });
+            }
+        });
+    }
+
     getLogInventory(LogTypeId: Number): Promise<Array<Log>> {
         return new Promise((resolve, reject) => {
             let logs: Array<Log> = new Array<Log>();

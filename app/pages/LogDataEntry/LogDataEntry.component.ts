@@ -6,6 +6,7 @@ import { RouterExtensions } from 'nativescript-angular';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from "../../services/data.service";
 import { Question } from "../../models/Question";
+import { Log } from "../../models/Log";
 
 
 @Component({
@@ -16,19 +17,17 @@ import { Question } from "../../models/Question";
 
 export class LogDataEntryComponent implements OnInit {
 	Questions: Array<Question>;
-	Answers: Array<string> = new Array<string>();
-	LogTypeId: number;
-	LogId: number;
-	LogResponses: Array<LogResponse>;
+	LogResponses: Array<LogResponse> = new Array<LogResponse>();
+	LogPrototype: Log = new Log();
 
 	constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
 	ngOnInit() {
 		const id = this.route.snapshot.params["id"];
 		if (id > 0) { //load an existing set of answers
-			this.LogId = id;
+			this.LogPrototype.LogId = id;
 			this.dataService.getLogTypeForLog(id).then(LogTypeId => {
-				this.LogTypeId = LogTypeId;
+				this.LogPrototype.LogTypeId = LogTypeId;
 				this.LoadQuestions(LogTypeId).then(questions => {
 					this.Questions = questions;
 					//this.LoadAnswers(id);
@@ -39,15 +38,9 @@ export class LogDataEntryComponent implements OnInit {
 				});
 			});
 		} else { //load a blank set of questions
-			this.LogTypeId = -id;
-			this.LogId = -1; //flag as new
+			this.LogPrototype.LogTypeId = -id; //we passed the type as a negative integer since there was no ID
+			this.LogPrototype.LogId = -1; //flag as new
 			this.LoadQuestions(-id).then(questions => this.Questions = questions);
-		}
-	}
-
-	private LoadAnswers(id) { //placeholder!
-		for (var index = 0; index < this.Questions.length; index++) {
-			this.Answers.push("Answer " + index.toString());
 		}
 	}
 
@@ -56,7 +49,7 @@ export class LogDataEntryComponent implements OnInit {
 		if (index == -1) { //we don't have an answer in our array, add a blank one
 			let logResponse: LogResponse = new LogResponse();
 			logResponse.Answer = "";
-			logResponse.LogId = this.LogId;
+			logResponse.LogId = this.LogPrototype.LogId;
 			logResponse.QuestionId = QuestionId;
 			return this.LogResponses.push(logResponse) - 1;
 		} else {
@@ -69,8 +62,13 @@ export class LogDataEntryComponent implements OnInit {
 	}
 
 	Save() {
-		this.Answers.forEach(answer => {
-			console.log(answer);
-		});
+		if (this.LogPrototype.LogId == -1) {
+			this.dataService.AddLog(this.LogPrototype).then(result => {
+				this.LogPrototype.LogId = result;
+				this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype);
+			});
+		} else {
+			this.dataService.saveLogResponses(this.LogResponses, this.LogPrototype);
+		}
 	}
 }
