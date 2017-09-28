@@ -1,7 +1,10 @@
+<ActionBarExtension>
+    <ActionItem (tap)="Save()">
+        <Button text="Save" class="btnAction"></Button>
+    </ActionItem>
+</ActionBarExtension>
 <ScrollView>
     <StackLayout>
-        <Button text="Save" (tap)="Save()"></Button>
-
         <StackLayout class="form" *ngFor="let question of Questions; let i = index">
             <Label class="body" text="{{question.Question}}" textWrap="true"></Label>
             <TextView class="input input-rounded" hint="{{question.Hint}}" [(ngModel)]="Answers[i]" text=""></TextView>

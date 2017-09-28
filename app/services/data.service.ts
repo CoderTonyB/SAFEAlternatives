@@ -43,6 +43,20 @@ export class DataService {
         });
     }
 
+    getLogTypeForLog(LogId: number): Promise<number> {
+        let result: Promise<number> = new Promise((resolve, reject) => {
+
+            this.database.get("SELECT LogTypeId from Logs where LogId = ?", LogId).then((row) => {
+                resolve(row[0]);
+            }, error => {
+                console.log("SELECT ERROR", error);
+                return error;
+            });
+        });
+
+        return result;
+    }
+
     getLogTypes(): Promise<Array<LogType>> {
         return new Promise((resolve, reject) => {
             let LogTypes: Array<LogType> = new Array<LogType>();
