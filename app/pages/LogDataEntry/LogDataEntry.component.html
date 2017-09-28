@@ -7,7 +7,8 @@
     <StackLayout>
         <StackLayout class="form" *ngFor="let question of Questions; let i = index">
             <Label class="body" text="{{question.Question}}" textWrap="true"></Label>
-            <TextView class="input input-rounded" hint="{{question.Hint}}" [(ngModel)]="Answers[i]" text=""></TextView>
+            <TextView class="input input-rounded" hint="{{question.Hint}}" [(ngModel)]="LogResponses[getAnswerIndex(question.QuestionId)].Answer"
+                text=""></TextView>
         </StackLayout>
     </StackLayout>
 </ScrollView>

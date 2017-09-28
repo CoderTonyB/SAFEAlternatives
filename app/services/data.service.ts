@@ -3,6 +3,7 @@ var Sqlite = require("nativescript-sqlite");
 import { Log } from "../models/Log";
 import { LogType } from "../models/LogType";
 import { Question } from "../models/Question";
+import { LogResponse } from "../models/LogResponse";
 
 @Injectable()
 export class DataService {
@@ -76,6 +77,28 @@ export class DataService {
         });
 
 
+    }
+
+    getLogResponses(LogId): Promise<Array<LogResponse>> {
+        return new Promise((resolve, reject) => {
+            let LogResponses: Array<LogResponse> = new Array<LogResponse>();
+
+            this.database.all(`Select LogResponseId, LogId, QuestionId, Answer from LogResponses
+                            where LogId = ?`, [LogId]).then((rows: Array<any>) => {
+                    rows.forEach(row => {
+                        let logResponse = new LogResponse();
+                        logResponse.LogResponseId = row[0];
+                        logResponse.LogId = row[1];
+                        logResponse.QuestionId = row[2];
+                        logResponse.Answer = row[3];
+                        LogResponses.push(logResponse);
+                    });
+                    resolve(LogResponses);
+                }, error => {
+                    console.log("SELECT ERROR", error);
+                    reject(error);
+                });
+        });
     }
 
     getQuestionsForLogType(LogTypeId: number): Promise<Array<Question>> {
