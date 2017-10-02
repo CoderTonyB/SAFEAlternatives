@@ -24,6 +24,7 @@ export class LogDataEntryComponent implements OnInit {
 
 	ngOnInit() {
 		const id = this.route.snapshot.params["id"];
+		const title = this.route.snapshot.params["title"];
 		if (id > 0) { //load an existing set of answers
 			this.LogPrototype.LogId = id;
 			this.dataService.getLogTypeForLog(id).then(LogTypeId => {
@@ -40,6 +41,7 @@ export class LogDataEntryComponent implements OnInit {
 		} else { //load a blank set of questions
 			this.LogPrototype.LogTypeId = -id; //we passed the type as a negative integer since there was no ID
 			this.LogPrototype.LogId = -1; //flag as new
+			this.LogPrototype.Title = title;
 			this.LoadQuestions(-id).then(questions => this.Questions = questions);
 		}
 	}

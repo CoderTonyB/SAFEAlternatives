@@ -5,6 +5,7 @@ import { RouterExtensions } from 'nativescript-angular';
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../services/data.service";
 import { Log } from "../../models/Log"
+import * as dialogs from "ui/dialogs";
 
 @Component({
 	selector: 'LogInventory',
@@ -28,12 +29,26 @@ export class LogInventoryComponent implements OnInit {
 	}
 
 	newLog() {
-		this.OpenLogDataEntry(this.logTypeId * -1); //sending negitive to indicate new
+
+		dialogs.prompt({
+			title: "New Log",
+			message: "Please enter a title for your new log",
+			okButtonText: "Save",
+			cancelButtonText: "Cancel",
+			defaultText: "Untitled",
+			inputType: dialogs.inputType.text
+		}).then(result => {
+			if (result.result) {
+				this.OpenLogDataEntry(this.logTypeId * -1, result.text); //sending negitive to indicate new
+			}
+		});
+
+
 	}
 
-	OpenLogDataEntry(LogId: Number) {
-		console.log("open log:", LogId);
-		this.routerExtensions.navigate(['/home', { outlets: { logoutlet: ['logdataentry', LogId] } }]);
+	OpenLogDataEntry(LogId: Number, Title: string = "") {
+		console.log("open log:", LogId, " title:", Title);
+		this.routerExtensions.navigate(['/home', { outlets: { logoutlet: ['logdataentry', LogId, Title] } }]);
 	}
 
 	ngOnInit() { }

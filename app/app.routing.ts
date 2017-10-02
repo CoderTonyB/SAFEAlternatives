@@ -20,7 +20,7 @@ const routes: Routes = [
             { path: "loghome", component: LogHomeComponent, outlet: 'logoutlet' },
             { path: "loglist", component: LogListComponent, outlet: 'logoutlet' },
             { path: "loginventory/:id", component: LogInventoryComponent, outlet: 'logoutlet' },
-            { path: "logdataentry/:id", component: LogDataEntryComponent, outlet: 'logoutlet' },
+            { path: "logdataentry/:id/:title", component: LogDataEntryComponent, outlet: 'logoutlet' },
             { path: "assesshome", component: SAFEHomeComponent, outlet: 'assessoutlet' }
         ]
     },
