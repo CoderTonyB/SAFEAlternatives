@@ -1,5 +1,5 @@
 <ActionBarExtension *ngIf="true">
-    <ActionItem (tap)="newLog()">
+    <ActionItem (tap)="newLog()" ios.position="right">
         <Button text="New Log" class="btnAction" [nsRouterLink]="['/logdataentry']"></Button>
     </ActionItem>
 </ActionBarExtension>
@@ -11,7 +11,7 @@
     <ListView [items]="logs" (itemTap)="viewLog(event)" class="list-group">
         <ng-template let-item="item" let-odd="odd" let-even="even">
             <StackLayout class="list-group-item" (tap)="OpenLogDataEntry(item.LogId)">
-                <Label [text]="item.TimestampUTC | date:'medium'"></Label>
+                <Label [text]="item.TimestampUTC.replace(' at ',' ') | date:'medium'"></Label>
                 <Label [text]="item.Title"></Label>
             </StackLayout>
         </ng-template>
