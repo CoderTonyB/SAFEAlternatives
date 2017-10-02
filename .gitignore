@@ -10,3 +10,4 @@ platforms/
 tmp/
 typings/
 report/
+app/tns_modules/
