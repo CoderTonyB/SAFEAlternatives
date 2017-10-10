@@ -8,6 +8,7 @@ import { DataService } from "../../services/data.service";
 import { Question } from "../../models/Question";
 import { Log } from "../../models/Log";
 
+import * as email from "nativescript-email";
 
 @Component({
 	selector: 'LogDataEntry',
@@ -29,6 +30,7 @@ export class LogDataEntryComponent implements OnInit {
 			this.LogPrototype.LogId = id;
 			this.dataService.getLogTypeForLog(id).then(LogTypeId => {
 				this.LogPrototype.LogTypeId = LogTypeId;
+				this.LogPrototype.Title = title;
 				this.LoadQuestions(LogTypeId).then(questions => {
 					this.Questions = questions;
 					//this.LoadAnswers(id);
@@ -61,6 +63,25 @@ export class LogDataEntryComponent implements OnInit {
 
 	private LoadQuestions(id: number): Promise<Question[]> {
 		return this.dataService.getQuestionsForLogType(id);
+	}
+
+	emailLog() {
+		let mailbody: string = "";
+		for (var index = 0; index < this.Questions.length; index++) {
+			mailbody += `<b>${this.Questions[index].Question}</b><br>${this.LogResponses[this.getAnswerIndex(this.Questions[index].QuestionId)].Answer}<br><br>`
+		}
+		console.log(mailbody);
+
+		email.compose({
+			subject: this.LogPrototype.Title,
+			body: mailbody,
+			to: ['']
+		}).then(
+			function () {
+				console.log("Email composer closed");
+			}, function (err) {
+				console.log("Error: " + err);
+			});
 	}
 
 	Save() {

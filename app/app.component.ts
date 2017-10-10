@@ -8,8 +8,7 @@ import { isAndroid } from "platform";
 })
 
 export class AppComponent implements OnInit {
-
-    showBack: boolean;
+    showBack: boolean = false;
 
     constructor(private routerExtensions: RouterExtensions) {
 

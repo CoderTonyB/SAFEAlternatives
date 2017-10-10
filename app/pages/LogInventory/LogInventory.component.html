@@ -10,7 +10,7 @@
 <GridLayout rows="*" columns="*">
     <ListView [items]="logs" (itemTap)="viewLog(event)" class="list-group">
         <ng-template let-item="item" let-odd="odd" let-even="even">
-            <StackLayout class="list-group-item" (tap)="OpenLogDataEntry(item.LogId)">
+            <StackLayout class="list-group-item" (tap)="OpenLogDataEntry(item.LogId, item.Title)">
                 <Label [text]="item.TimestampUTC.replace(' at ',' ') | date:'medium'"></Label>
                 <Label [text]="item.Title"></Label>
             </StackLayout>

@@ -1,6 +1,6 @@
-    <Page.actionBar>
-        <ActionBar title="S.A.F.E. Alternatives" style="background-color:#035958;color:whitesmoke">
-            <ActionItem ios.position="left" ios.systemIcon="8" text="Go Back" (tap)="goBack()" android.systemIcon="ic_menu_back"></ActionItem>
-        </ActionBar>
-    </Page.actionBar>
-    <router-outlet></router-outlet>
+<Page.actionBar>
+    <ActionBar title="S.A.F.E. Alternatives" style="background-color:#035958;color:whitesmoke">
+        <NavigationButton [visibility]="showBack" ios.position="left" ios.systemIcon="8" text="Go Back" (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+    </ActionBar>
+</Page.actionBar>
+<router-outlet></router-outlet>
