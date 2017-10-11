@@ -15,6 +15,7 @@ import { LogInventoryComponent } from "./pages/LogInventory/LogInventory.compone
 import { LogDataEntryComponent } from "./pages/LogDataEntry/LogDataEntry.component"
 
 import { DataService } from "./services/data.service"
+import { StateService } from "./services/state.service"
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -44,7 +45,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         LogDataEntryComponent
     ],
     providers: [
-        ItemService, DataService
+        ItemService, DataService, StateService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular";
 import { isAndroid } from "platform";
+import { StateService } from "../app/services/state.service";
+
 
 @Component({
     selector: "ns-app",
@@ -10,8 +12,8 @@ import { isAndroid } from "platform";
 export class AppComponent implements OnInit {
     showBack: boolean = false;
 
-    constructor(private routerExtensions: RouterExtensions) {
-
+    constructor(private routerExtensions: RouterExtensions, private stateService: StateService) {
+        this.stateService.showBack.subscribe(showBack => this.showBack = showBack);
     }
 
     goBack() {
@@ -19,7 +21,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.showBack = !isAndroid;
+        //this.showBack = !isAndroid;
     }
 }
 

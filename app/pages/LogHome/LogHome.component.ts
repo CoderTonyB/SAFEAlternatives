@@ -4,6 +4,7 @@ import { TextField } from "ui/text-field";
 import { EventData } from "data/observable";
 import { RouterExtensions } from "nativescript-angular";
 import { DataService } from "../../services/data.service"
+import { StateService } from "../../services/state.service";
 
 @Component({
 	selector: 'LogHome',
@@ -17,7 +18,8 @@ export class LogHomeComponent implements OnInit {
 
 	constructor(private page: Page,
 		private routerExtensions: RouterExtensions,
-		private dataService: DataService
+		private dataService: DataService,
+		private stateService: StateService
 	) {
 
 	}
@@ -26,6 +28,7 @@ export class LogHomeComponent implements OnInit {
 		this.txtPassword = <TextField>this.page.getViewById("txtPassword");
 		this.txtPassword2 = <TextField>this.page.getViewById("txtPassword2");
 		this.txtPassword.focus();
+		this.stateService.setShowback(false);
 	}
 
 	savePassword(event: EventData) {
@@ -38,6 +41,7 @@ export class LogHomeComponent implements OnInit {
 			alert("Passwords do not match!");
 		}
 		else {
+			this.stateService.setShowback(true);
 			this.routerExtensions.navigate(['/home', {
 				outlets: { logoutlet: ['loglist'] }
 			}]);
