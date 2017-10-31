@@ -10,6 +10,7 @@ import { LogHomeComponent } from "./pages/LogHome/LogHome.component";
 import { LogListComponent } from "./pages/LogList/LogList.component";
 import { LogInventoryComponent } from "./pages/LogInventory/LogInventory.component";
 import { LogDataEntryComponent } from "./pages/LogDataEntry/LogDataEntry.component";
+import { SelfAssessComponent } from './pages/SelfAssess/SelfAssess.component'
 
 const routes: Routes = [
     { path: "", redirectTo: "/home/(homeoutlet:safehome//logoutlet:loghome//assessoutlet:assesshome)", pathMatch: "full" },
@@ -21,7 +22,7 @@ const routes: Routes = [
             { path: "loglist", component: LogListComponent, outlet: 'logoutlet' },
             { path: "loginventory/:id", component: LogInventoryComponent, outlet: 'logoutlet' },
             { path: "logdataentry/:id/:title", component: LogDataEntryComponent, outlet: 'logoutlet' },
-            { path: "assesshome", component: SAFEHomeComponent, outlet: 'assessoutlet' }
+            { path: "assesshome", component: SelfAssessComponent, outlet: 'assessoutlet' }
         ]
     },
     { path: "items", component: ItemsComponent },

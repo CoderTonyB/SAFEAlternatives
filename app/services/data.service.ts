@@ -4,23 +4,27 @@ import { Log } from "../models/Log";
 import { LogType } from "../models/LogType";
 import { Question } from "../models/Question";
 import { LogResponse } from "../models/LogResponse";
+import { SelfAssessQuestion } from "../models/SelfAssessQuestion";
 
 @Injectable()
 export class DataService {
     private database: any;
 
     constructor() {
-        if (!Sqlite.exists("SAFE.db")) {
-            Sqlite.copyDatabase("SAFE.db");
-            console.log("Initial database created");
-        }
-        (new Sqlite("SAFE.db")).then(db => {
-            this.database = db;
+        if (this.database == undefined) {
+            if (!Sqlite.exists("SAFE.db")) {
+                Sqlite.copyDatabase("SAFE.db");
+                console.log("Initial database created");
+            }
 
-        }, error => {
-            console.log("OPEN DB ERROR", error);
-        });
-        console.log("Database is initialized");
+            new Sqlite("SAFE.db").then(db => {
+                this.database = db;
+            }, error => {
+                console.log("OPEN DB ERROR", error);
+            });
+
+            console.log("Database is initialized");
+        }
     }
 
     logError(error: string) {
@@ -126,8 +130,42 @@ export class DataService {
                 reject(error);
             });
         });
+    }
 
+    getSelfAssessmentQuestions(): Promise<Array<SelfAssessQuestion>> {
+        return new Promise((resolve, reject) => {
+            let Questions: Array<SelfAssessQuestion> = new Array<SelfAssessQuestion>();
 
+            this.database.all("SELECT QuestionId, [Order], Question, Type, Answer from SelfAssessment order by [Order]").then((rows: Array<any>) => {
+                rows.forEach(row => {
+                    let Question = new SelfAssessQuestion();
+                    Question.QuestionId = row[0];
+                    Question.Order = row[1];
+                    Question.Question = row[2];
+                    Question.Type = row[3];
+
+                    switch (Question.Type) {
+                        case 'True/False':
+                            if (row[3].toLowerCase() == 'true') {
+                                Question.Answer = true;
+                            }
+                            else {
+                                Question.Answer = false;
+                            }
+                            break;
+                        default:
+                            Question.Answer = row[4];
+                            break;
+                    }
+
+                    Questions.push(Question);
+                });
+                resolve(Questions);
+            }, error => {
+                console.log("SELECT ERROR", error);
+                reject(error);
+            });
+        });
     }
 
     getLogResponses(LogId): Promise<Array<LogResponse>> {
