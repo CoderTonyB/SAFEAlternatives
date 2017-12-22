@@ -11,6 +11,10 @@ export class DataService {
     private database: any;
 
     constructor() {
+        this.initDatabase();
+    }
+
+    initDatabase() {
         if (this.database == undefined) {
             if (!Sqlite.exists("SAFE.db")) {
                 Sqlite.copyDatabase("SAFE.db");
@@ -30,6 +34,7 @@ export class DataService {
     logError(error: string) {
         console.log(error);
     }
+
 
     AddLog(log: Log): Promise<number> {
         let date = new Date();

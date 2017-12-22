@@ -25,6 +25,14 @@ export class LogHomeComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		//bypass password entry as they are already logged into their phone
+		this.stateService.setShowback(true);
+		this.routerExtensions.navigate(['/home', {
+			outlets: { logoutlet: ['loglist'] }
+		}]);
+		//end bypass password entry
+
+
 		this.txtPassword = <TextField>this.page.getViewById("txtPassword");
 		this.txtPassword2 = <TextField>this.page.getViewById("txtPassword2");
 		this.txtPassword.focus();
