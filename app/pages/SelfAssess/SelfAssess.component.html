@@ -1,7 +1,7 @@
 <ScrollView>
     <StackLayout>
         <StackLayout class="form" *ngFor="let question of Questions; let i = index">
-            <Label class="body" text="{{question.Question}}" textWrap="true"></Label>
+            <Label class="body" text="{{question.Order}}. {{question.Question}}" textWrap="true"></Label>
             <StackLayout *ngIf="question.Type == 'True/False'" orientation="horizontal">
                 <Label text="false" class="switchLabel"></Label>
                 <Switch class="switch" (checkedChange)='switchChanged($event, question.QuestionId)'>
@@ -9,12 +9,12 @@
                 <Label text="true" class="switchLabel"></Label>
             </StackLayout>
             <StackLayout *ngIf="question.Type == 'Integer'" orientation="horizontal">
-                <Slider [minValue]="0" [maxValue]="20" [value]="0" class="slider" style="width:70%;" (valueChange)='questionAnswered(question.QuestionId)'
-                    [(ngModel)]="Questions[getAnswerIndex(question.QuestionId)].Answer"></Slider>
-                <TextField hint="" text="" type="integer" style="width:20%;" [(ngModel)]="Questions[getAnswerIndex(question.QuestionId)].Answer"></TextField>
+                <Slider [minValue]="0" [maxValue]="20" [value]="0" class="slider" style="width:70%;" (valueChange)='sliderChanged($event, question.QuestionId)'
+                    [(ngModel)]="question.Answer"></Slider>
+                <TextField hint="" text="" type="integer" style="width:20%;" [(ngModel)]="question.Answer"></TextField>
             </StackLayout>
             <StackLayout *ngIf="question.Type == 'Date'" orientation="horizontal">
-                <DatePicker hint="" text="" [(ngModel)]="Questions[getAnswerIndex(question.QuestionId)].Answer" style="width:90%;"></DatePicker>
+                <DatePicker [(ngModel)]="question.Answer" style="width:90%;" (dateChange)='datepickerChanged($event, question.QuestionId)'></DatePicker>
             </StackLayout>
         </StackLayout>
         <Button class='btn btnAction' text="Score Assessment" (tap)="scoreAssessment()"></Button>

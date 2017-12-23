@@ -148,7 +148,6 @@ export class DataService {
                     Question.Order = row[1];
                     Question.Question = row[2];
                     Question.Type = row[3];
-
                     switch (Question.Type) {
                         case 'True/False':
                             if (row[3].toLowerCase() == 'true') {
@@ -157,6 +156,10 @@ export class DataService {
                             else {
                                 Question.Answer = false;
                             }
+                            break;
+                        case 'Date':
+                            Question.Answer = new Date(Date.now());
+                            console.log("current date answer:", Question.Answer);
                             break;
                         default:
                             Question.Answer = row[4];
