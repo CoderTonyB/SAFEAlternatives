@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { TabView, SelectedIndexChangedEventData, TabViewItem } from "ui/tab-view";
 import { RouterExtensions } from "nativescript-angular";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
@@ -15,7 +15,9 @@ import { StateService } from '../../services/state.service'
 
 export class HomeComponent implements OnInit {
 
-	constructor(private routerExtensions: RouterExtensions, private stateService: StateService) { }
+	constructor(private routerExtensions: RouterExtensions,
+		private stateService: StateService
+	) { }
 
 	ngOnInit() {
 		if (!isAndroid) {
@@ -30,5 +32,6 @@ export class HomeComponent implements OnInit {
 	selectTab(event: SelectedIndexChangedEventData) {
 		this.stateService.setShowback(event.newIndex == 1); //if we're on the second (log tab), show the back button
 	}
+
 
 }

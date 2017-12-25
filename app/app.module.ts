@@ -15,6 +15,7 @@ import { LogListComponent } from "./pages/LogList/LogList.component"
 import { LogInventoryComponent } from "./pages/LogInventory/LogInventory.component"
 import { LogDataEntryComponent } from "./pages/LogDataEntry/LogDataEntry.component"
 import { SelfAssessComponent } from "./pages/SelfAssess/SelfAssess.component"
+import { CreditsComponent } from "./pages/Credits/Credits.component"
 
 import { DataService } from "./services/data.service"
 import { StateService } from "./services/state.service"
@@ -45,13 +46,17 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         LogListComponent,
         LogInventoryComponent,
         LogDataEntryComponent,
-        SelfAssessComponent
+        SelfAssessComponent,
+        CreditsComponent
     ],
     providers: [
         ItemService, DataService, StateService, ModalDialogService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    entryComponents: [
+        CreditsComponent
     ]
 })
 /*
