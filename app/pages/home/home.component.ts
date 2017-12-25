@@ -4,6 +4,7 @@ import { RouterExtensions } from "nativescript-angular";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "application";
 import { isAndroid } from "platform";
 import * as application from "application";
+import { StateService } from '../../services/state.service'
 
 
 @Component({
@@ -14,7 +15,7 @@ import * as application from "application";
 
 export class HomeComponent implements OnInit {
 
-	constructor(private routerExtensions: RouterExtensions) { }
+	constructor(private routerExtensions: RouterExtensions, private stateService: StateService) { }
 
 	ngOnInit() {
 		if (!isAndroid) {
@@ -24,6 +25,10 @@ export class HomeComponent implements OnInit {
 			data.cancel = true;
 			this.routerExtensions.back();
 		});
+	}
+
+	selectTab(event: SelectedIndexChangedEventData) {
+		this.stateService.setShowback(event.newIndex == 1); //if we're on the second (log tab), show the back button
 	}
 
 }

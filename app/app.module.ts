@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular"
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
+import { ModalDialogService } from "nativescript-angular/modal-dialog";
 
 import { ItemService } from "./item/item.service";
 import { ItemsComponent } from "./item/items.component";
@@ -47,7 +48,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
         SelfAssessComponent
     ],
     providers: [
-        ItemService, DataService, StateService
+        ItemService, DataService, StateService, ModalDialogService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

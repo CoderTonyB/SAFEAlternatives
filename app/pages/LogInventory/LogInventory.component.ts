@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../services/data.service";
 import { Log } from "../../models/Log"
 import * as dialogs from "ui/dialogs";
+import { StateService } from '../../services/state.service'
 
 @Component({
 	selector: 'LogInventory',
@@ -18,11 +19,12 @@ export class LogInventoryComponent implements OnInit {
 
 	logs: Array<Log>;
 	constructor(private route: ActivatedRoute, private dataService: DataService,
-		private routerExtensions: RouterExtensions
+		private routerExtensions: RouterExtensions, private stateService: StateService
 	) {
 		this.logs = new Array<Log>();
 		const id = this.route.snapshot.params["id"];
 		this.logTypeId = id;
+		this.stateService.setShowback(true);
 		this.dataService.getLogInventory(id).then((x) => {
 			this.logs = x;
 		}, err => console.dir(err));
