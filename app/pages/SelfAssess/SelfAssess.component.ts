@@ -10,6 +10,9 @@ import { Switch } from 'tns-core-modules/ui/switch/switch';
 import { Slider } from 'tns-core-modules/ui/slider/slider';
 import * as email from "nativescript-email";
 import { DatePicker } from 'tns-core-modules/ui/date-picker/date-picker';
+import { TextField } from 'tns-core-modules/ui/text-field/text-field';
+const ModalPicker = require("nativescript-modal-datetimepicker").ModalDatetimepicker;
+
 
 @Component({
 	selector: 'SelfAssess',
@@ -41,6 +44,25 @@ export class SelfAssessComponent implements OnInit {
 		let q = <DatePicker>event.object;
 		//this.Questions.find(x => x.QuestionId == questionId).Answer = q.date;
 		console.log(questionId, "=", q.date);
+	}
+
+	datepickerTapped(event, questionId) {
+		let q = <TextField>event.object;
+		q.dismissSoftInput();
+		const picker = new ModalPicker();
+
+		picker.pickDate({
+			title: "Last SI Date",
+			theme: "light",
+			maxDate: new Date()
+		}).then((result) => {
+			q.text = + result.month + "/" + result.day + "/" + result.year;
+		}).catch((error) => {
+			console.log("Error: " + error);
+		});
+
+
+		//console.log(questionId, "=", q.date);
 	}
 
 	switchChanged(event, questionId) {

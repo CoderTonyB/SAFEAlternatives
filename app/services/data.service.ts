@@ -158,8 +158,8 @@ export class DataService {
                             }
                             break;
                         case 'Date':
-                            Question.Answer = new Date(Date.now());
-                            console.log("current date answer:", Question.Answer);
+                            //Question.Answer = new Date(Date.now());
+                            //console.log("current date answer:", Question.Answer);
                             break;
                         default:
                             Question.Answer = row[4];
