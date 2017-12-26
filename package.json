@@ -1,12 +1,15 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
+  "description": "SAFE Alternatives App v2",
+  "license": "GNU General Public License",
+  "readme": "",
+  "repository": "https://github.com/CoderTonyB/SAFEAlternatives",
   "nativescript": {
-    "id": "com.tonybellomo.safeapp",
+    "id": "com.selfinjury.SAFE",
     "tns-android": {
       "version": "3.3.0"
+    },
+    "tns-ios": {
+      "version": "3.4.0"
     }
   },
   "dependencies": {
