@@ -5,10 +5,10 @@
   "repository": "https://github.com/CoderTonyB/SAFEAlternatives",
   "nativescript": {
     "id": "com.selfinjury.SAFE",
-    "tns-android": {
-      "version": "3.3.0"
-    },
     "tns-ios": {
+      "version": "3.4.0"
+    },
+    "tns-android": {
       "version": "3.4.0"
     }
   },

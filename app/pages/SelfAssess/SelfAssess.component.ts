@@ -34,9 +34,9 @@ export class SelfAssessComponent implements OnInit {
 		}, 1000, this);
 	}
 
-	sliderChanged(event, questionId) {
-		let q = <Slider>event.object;
-		this.Questions.find(x => x.QuestionId == questionId).Answer = q.value;
+	sliderChanged(value, questionId) {
+		//let q = <Slider>event.object;
+		this.Questions.find(x => x.QuestionId == questionId).Answer = value;
 		//console.log(questionId, "=", q.value);
 	}
 
@@ -52,8 +52,8 @@ export class SelfAssessComponent implements OnInit {
 		const picker = new ModalPicker();
 
 		picker.pickDate({
-			title: "Last SI Date",
-			theme: "light",
+			title: "Last Self Injury Date",
+			theme: "Forest",
 			maxDate: new Date()
 		}).then((result) => {
 			q.text = + result.month + "/" + result.day + "/" + result.year;
