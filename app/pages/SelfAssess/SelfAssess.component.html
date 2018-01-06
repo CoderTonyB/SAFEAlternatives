@@ -11,7 +11,8 @@
             <StackLayout *ngIf="question.Type == 'Integer'" orientation="horizontal">
                 <!--<Slider #sl [minValue]="0" [maxValue]="20" [value]="0" class="slider" style="width:70%;" (valueChange)='sliderChanged(sl.value, question.QuestionId)'
                     [(ngModel)]="question.Answer"></Slider>-->
-                <TextField hint="" text="" type="integer" keyboardType="number" style="width:20%;text-align:center;" [(ngModel)]="question.Answer"></TextField>
+                <TextField hint="" text="" keyboardType="number" type="integer" keyboardType="number" style="width:20%;text-align:center;"
+                    [(ngModel)]="question.Answer"></TextField>
             </StackLayout>
             <StackLayout *ngIf="question.Type == 'Date'" orientation="horizontal">
                 <TextField hint="Tap to select..." editable="false" style="width:100%;text-align:center;" [(ngModel)]="question.Answer" (tap)='datepickerTapped($event, question.QuestionId)'></TextField>
