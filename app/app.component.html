@@ -1,6 +1,6 @@
 <Page.actionBar>
     <ActionBar title="S.A.F.E. Alternatives" style="background-color:#035958;color:whitesmoke">
-        <NavigationButton *ngIf="showBack" (tap)="goBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+        <ActionItem *ngIf="showBack" ios.position="left" (tap)="goBack()" icon="res://backarrow"></ActionItem>
     </ActionBar>
 </Page.actionBar>
 <router-outlet></router-outlet>

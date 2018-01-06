@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as utils from "utils/utils";
+import { Page } from 'tns-core-modules/ui/page/page';
+import { ModalDialogParams } from 'nativescript-angular/directives/dialogs';
 //import { RouterExtensions } from 'nativescript-angular';
 //import { TextField } from 'ui/text-field';
 //import { EventData } from 'data/observable';
@@ -13,11 +15,15 @@ import * as utils from "utils/utils";
 
 export class CreditsComponent implements OnInit {
 
-	constructor() { }
+	constructor(private page: Page, private params: ModalDialogParams) { }
 
 	ngOnInit() { }
 
 	GoToGit() {
 		utils.openUrl("https://github.com/CoderTonyB/SAFEAlternatives");
+	}
+
+	closeCredits(){
+		this.params.closeCallback();
 	}
 }
