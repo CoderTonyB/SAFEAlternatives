@@ -3,6 +3,8 @@ import { EventData } from "data/observable";
 import { Button } from "ui/button";
 import { CreditsComponent } from '../../pages/Credits/Credits.component'
 import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
+import * as utils from "utils/utils";
+
 
 
 @Component({
@@ -30,6 +32,10 @@ export class SAFEHomeComponent implements OnInit {
 		};
 
 		return this.modalService.showModal(CreditsComponent, options);
+	}
+
+	visitSAFE(vent: EventData) {
+		utils.openUrl("http://www.selfinjury.com");
 	}
 
 	callDontCut(event: EventData) {

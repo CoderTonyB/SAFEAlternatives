@@ -1,6 +1,6 @@
 <ActionBarExtension *ngIf="true">
     <ActionItem (tap)="newLog()" ios.position="right">
-        <Button text="New Log" class="btnAction" [nsRouterLink]="['/logdataentry']"></Button>
+        <Button text="New Log" class="btnActionBar" [nsRouterLink]="['/logdataentry']"></Button>
     </ActionItem>
 </ActionBarExtension>
 <StackLayout *ngIf="logs.length < 1" style="margin-top:25;">

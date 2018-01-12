@@ -105,7 +105,7 @@ export class SelfAssessComponent implements OnInit {
 		}
 
 		mailbody += `)<br/>We suggest that anyone who answered "true" to any of these questions might benefit from consultation with a professional who understands self-injury.  You may use the questionnaire as a tool for discussion during the consultation.<br/><br/>
-Please send this e-mail to S.A.F.E. ALTERNATIVES if you would like to speak with someone or receive information about self-injury treatment.  Feel free to share this e-mail with anyone who you feel might be able to help you.  <br/><br/>
+Feel free to share this e-mail with anyone who you feel might be able to help you.  <br/><br/>
 The answers to your self assessment questions are below. <br/><br/>`;
 
 		for (var index = 0; index < this.Questions.length; index++) {
@@ -115,8 +115,7 @@ The answers to your self assessment questions are below. <br/><br/>`;
 
 		email.compose({
 			subject: "SAFE Alternatives Self Assessment",
-			body: mailbody,
-			cc: ['info@SAFEAlternatives.org']
+			body: mailbody
 		}).then(
 			function () {
 				//console.log("Email composer closed");

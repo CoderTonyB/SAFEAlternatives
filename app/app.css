@@ -12,6 +12,15 @@ refer to http://docs.nativescript.org/ui/theme.
 
 @import 'nativescript-theme-core/css/core.light.css';
 .btnAction {
-    background-color:#035958;
-    color:#f2ebda
+    background-color: #6bbeba;
+    color: #000000
+}
+
+.btnActionBar {
+    background-color: #50918d;
+    color: #000000
+}
+
+.background {
+    background-color: #6bbeba;
 }
