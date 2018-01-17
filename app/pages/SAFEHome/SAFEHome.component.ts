@@ -34,8 +34,20 @@ export class SAFEHomeComponent implements OnInit {
 		return this.modalService.showModal(CreditsComponent, options);
 	}
 
-	visitSAFE(vent: EventData) {
-		utils.openUrl("http://www.selfinjury.com");
+	visitURL(url: String) {
+		switch (url) {
+			case 'SAFE':
+				utils.openUrl("http://www.selfinjury.com");
+				break;
+			case 'FACEBOOK':
+				utils.openUrl("https://www.facebook.com/SAFE-Self-Abuse-Finally-Ends-ALTERNATIVES-100545512550/");
+				break;
+			case 'TWITTER':
+				utils.openUrl("https://twitter.com/theSAFEstore");
+				break;
+			default:
+				break;
+		}
 	}
 
 	callDontCut(event: EventData) {
