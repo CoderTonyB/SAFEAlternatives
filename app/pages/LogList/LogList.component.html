@@ -1,5 +1,10 @@
 <ScrollView>
     <StackLayout>
+        <FlexboxLayout flexDirection="row" flexWrap="wrap" alignContent="center" alignItems="center" justifyContent="center" style="margin-bottom:5;">
+            <Label text="Visit our "></Label>
+            <Image src="res://youtube" stretch="none" (tap)="visitURL('YOUTUBE')" style=''></Image>
+            <Label text=" page to learn how to use your logs"></Label>
+        </FlexboxLayout>
         <Label text="Select a log to start" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
         <Label text="journaling your thoughts" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
         <Button *ngFor="let log of logs" class="btn btn-rounded btnAction" text="{{log.LogType}}" (tap)="OpenLogList(log.LogTypeId)"></Button>

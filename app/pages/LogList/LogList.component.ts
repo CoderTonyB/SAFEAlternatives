@@ -6,6 +6,8 @@ import { isAndroid } from "platform";
 import { DataService } from "../../services/data.service";
 import { LogType } from "../../models/LogType"
 import { StateService } from '../../services/state.service'
+import * as utils from "utils/utils";
+
 
 
 @Component({
@@ -26,6 +28,10 @@ export class LogListComponent implements OnInit {
 		this.dataService.getLogTypes().then((logs) => {
 			this.logs = logs;
 		}, error => alert("Error:" + error));
+	}
+
+	visitURL(url: String) {
+		utils.openUrl("https://www.youtube.com/channel/UC-dh1cEUaK6D_vK0cUVCiFQ");
 	}
 
 	OpenLogList(LogId: Number) {
