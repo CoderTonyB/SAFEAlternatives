@@ -3,7 +3,7 @@
         <Label textWrap="true" text="For True/False questions, they are all set to false. Click the switch to set the answer to true."></Label>
 
         <StackLayout class="form" *ngFor="let question of Questions; let i = index">
-            <Label class="body" text="{{question.Order}}. {{question.Question}}" textWrap="true"></Label>
+            <Label text="{{question.Order}}. {{question.Question}}" textWrap="true"></Label>
             <StackLayout *ngIf="question.Type == 'True/False'" orientation="horizontal">
                 <Label text="false" class="switchLabel"></Label>
                 <Switch class="switch" (checkedChange)='switchChanged($event, question.QuestionId)'>

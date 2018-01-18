@@ -10,17 +10,22 @@ of writing your own CSS rules. For a full list of class names in the theme
 refer to http://docs.nativescript.org/ui/theme.
 */
 
-@import 'nativescript-theme-core/css/core.light.css';
+@import 'nativescript-theme-core/css/lemon.css';
 .btnAction {
-    background-color: #6bbeba;
+    background-color: #2ae8f6;
     color: #000000
 }
 
 .btnActionBar {
-    background-color: #50918d;
+    background-color: #01C8DA;
     color: #000000
 }
 
 .background {
-    background-color: #6bbeba;
+    background-color: #2ae8f6;
+}
+
+Label {
+    color: black;
+    font-weight: bold;
 }

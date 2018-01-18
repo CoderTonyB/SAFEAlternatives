@@ -1,14 +1,13 @@
 .SelfAssess {}
 
-Label {
-    color: #035958;
-    font-weight: bold;
-}
-
 StackLayout {
     margin: 10 10 0 10;
 }
 
 .switchLabel {
     padding-top: 15;
+}
+
+Switch {
+    color: #1953F4;
 }
