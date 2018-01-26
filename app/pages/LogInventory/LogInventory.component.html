@@ -1,3 +1,6 @@
+<StackLayout>
+    <Label [text]="logtype.LogType + ' Log'" textWrap="true" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
+</StackLayout>
 <ActionBarExtension *ngIf="true">
     <ActionItem (tap)="newLog()" ios.position="right">
         <Button text="New Log" class="btnActionBar" [nsRouterLink]="['/logdataentry']"></Button>
@@ -7,6 +10,7 @@
     <Label text='There are no entries in this log.' textWrap="true" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
     <Label text='Click the "New Log" button to create one.' textWrap="true" style="text-align: center; font-weight: bold; font-size:20em;"></Label>
 </StackLayout>
+
 <GridLayout rows="*" columns="*">
     <ListView [items]="logs" (itemTap)="viewLog(event)" class="list-group">
         <ng-template let-item="item" let-odd="odd" let-even="even">

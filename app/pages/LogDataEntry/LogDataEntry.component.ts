@@ -28,10 +28,10 @@ export class LogDataEntryComponent implements OnInit {
 		const title = this.route.snapshot.params["title"];
 		if (id > 0) { //load an existing set of answers
 			this.LogPrototype.LogId = id;
-			this.dataService.getLogTypeForLog(id).then(LogTypeId => {
-				this.LogPrototype.LogTypeId = LogTypeId;
+			this.dataService.getLogTypeForLog(id).then(logType => {
+				this.LogPrototype.LogTypeId = logType.LogTypeId;
 				this.LogPrototype.Title = title;
-				this.LoadQuestions(LogTypeId).then(questions => {
+				this.LoadQuestions(logType.LogTypeId).then(questions => {
 					this.Questions = questions;
 					//this.LoadAnswers(id);
 

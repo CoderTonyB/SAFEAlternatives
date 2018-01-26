@@ -1,5 +1,5 @@
 export class LogType {
-    LogTypeId: Number;
+    LogTypeId: number;
     LogType: string;
     Description: string;
 }

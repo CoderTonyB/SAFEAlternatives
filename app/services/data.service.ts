@@ -104,11 +104,15 @@ export class DataService {
         });
     }
 
-    getLogTypeForLog(LogId: number): Promise<number> {
-        let result: Promise<number> = new Promise((resolve, reject) => {
+    getLogTypeForLog(LogId: number): Promise<LogType> {
+        let result: Promise<LogType> = new Promise((resolve, reject) => {
 
-            this.database.get("SELECT LogTypeId from Logs where LogId = ?", LogId).then((row) => {
-                resolve(row[0]);
+            this.database.get("SELECT Logs.LogTypeId, LogType, Description from Logs inner join LogTypes on LogTypes.LogTypeId = Logs.LogTypeId where LogId = ?", LogId).then((row) => {
+                let logType: LogType = new LogType();
+                logType.LogTypeId = row[0];
+                logType.LogType = row[1];
+                logType.Description = row[2];
+                resolve(logType);
             }, error => {
                 console.log("SELECT ERROR", error);
                 return error;
@@ -116,6 +120,23 @@ export class DataService {
         });
 
         return result;
+    }
+
+    getLogTypeById(id: number): Promise<LogType> {
+        return new Promise((resolve, reject) => {
+            let LogTypes: Array<LogType> = new Array<LogType>();
+
+            this.database.all("SELECT LogTypeId, LogType, Description FROM LogTypes where LogTypeId = ?", id).then((rows: Array<any>) => {
+                let logType = new LogType();
+                logType.LogTypeId = rows[0][0];
+                logType.LogType = rows[0][1];
+                logType.Description = rows[0][2];
+                resolve(logType);
+            }, error => {
+                console.log("SELECT ERROR", error);
+                reject(error);
+            });
+        });
     }
 
     getLogTypes(): Promise<Array<LogType>> {
