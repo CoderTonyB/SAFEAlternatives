@@ -10,6 +10,6 @@
             <TextView class="input input-rounded" returnKeyType="next" hint="{{question.Hint}}" [(ngModel)]="LogResponses[getAnswerIndex(question.QuestionId)].Answer"
                 text=""></TextView>
         </StackLayout>
-        <Button text="E-mail Log" class="btn btnAction" (tap)="emailLog()"></Button>
+        <Button text="E-mail Log" class="btn btnAction" (tap)="emailLog()" style="margin-bottom:250;"></Button>
     </StackLayout>
 </ScrollView>

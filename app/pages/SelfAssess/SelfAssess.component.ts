@@ -80,6 +80,12 @@ export class SelfAssessComponent implements OnInit {
 		}
 	}
 
+	setIntNull(intQuestion: TextField) {
+		if (intQuestion.text == '0') {
+			intQuestion.text = '';
+		}
+	}
+
 	getAnswerIndex(QuestionId: number): number {
 		let index = this.Questions.findIndex(x => x.QuestionId == QuestionId)
 		return index;
@@ -109,7 +115,11 @@ Feel free to share this e-mail with anyone who you feel might be able to help yo
 The answers to your self assessment questions are below. <br/><br/>`;
 
 		for (var index = 0; index < this.Questions.length; index++) {
-			mailbody += `<b>${this.Questions[index].Question}</b><br>${this.Questions[index].Answer}<br><br>`
+			let answer = 'No Answer Given';
+			if (this.Questions[index].Answer != undefined) {
+				answer = this.Questions[index].Answer;
+			}
+			mailbody += `<b>${this.Questions[index].Question}</b><br>${answer}<br><br>`
 		}
 		//console.log(mailbody);
 
