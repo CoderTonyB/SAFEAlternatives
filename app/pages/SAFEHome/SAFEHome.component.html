@@ -5,5 +5,10 @@
         <Image src="res://facebook" stretch="none" (tap)="visitURL('FACEBOOK')" style='margin-right:20;'></Image>
         <Image src="res://twitter" stretch="none" (tap)="visitURL('TWITTER')" style='margin-left:20;'></Image>
     </FlexboxLayout>
+    <FlexboxLayout justifyContent='center' style="margin-top:20;" col='0' row='3'>
+        <Label text="Visit the app tutorial on " textWrap="true" (tap)="visitURL('YOUTUBE')"></Label>
+
+        <Image src="res://youtube" stretch="none" (tap)="visitURL('YOUTUBE')" style=''></Image>
+    </FlexboxLayout>
     <Button col='0' row='4' text="View Credits" (tap)="openCredits()" class="btn btnAction"></Button>
 </GridLayout>

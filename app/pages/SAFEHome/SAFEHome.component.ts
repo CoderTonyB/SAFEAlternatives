@@ -45,6 +45,9 @@ export class SAFEHomeComponent implements OnInit {
 			case 'TWITTER':
 				utils.openUrl("https://twitter.com/theSAFEstore");
 				break;
+			case 'YOUTUBE':
+				utils.openUrl("https://www.youtube.com/watch?v=3ez5tZ27HUo");
+				break;
 			default:
 				break;
 		}
